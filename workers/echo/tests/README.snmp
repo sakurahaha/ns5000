@@ -1,0 +1,44 @@
+
+SNMP part of echo worker demonstrates ability to append
+worker's custom OIDs to system SNMP agent.
+
+On clean system those tests will fail because daemon is not
+configured and disabled. To enable it do following:
+
+
+Automatic BDD test setup
+=========================
+
+!!! WARNING: your current net-snmp configuration will be erased !!!
+
+cat >/etc/nef/testConfig/echo.js <<ENDL
+module.exports = {
+    resetSnmpDaemon: true,
+};
+ENDL
+
+
+
+Manual BDD test setup
+=====================
+
+1. update /etc/net-snmp/snmp/snmpd.conf so they will have
+those values:
+
+-----------------------------------------------------
+trap2sink 127.0.0.1 testCommunity
+master agentx
+agentXSocket unix:/var/net-snmp/agentx
+rocommunity public
+-----------------------------------------------------
+
+2. enable daemon:
+# svcadm enable net-snmp
+
+3. test daemon. This command should return hostname:
+# snmpget -c public -v 2c 127.0.0.1 sysName.0
+
+4. restart echo worker:
+# nefadm restart echo
+
+Now SNMP part of BDD test should success.

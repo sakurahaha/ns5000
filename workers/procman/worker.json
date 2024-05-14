@@ -1,0 +1,8 @@
+{
+    "name": "procman",
+    "tag": "core",
+    "description": "Process manager",
+    "livenessCounter": 60,
+    "path": "nefServer.js"
+}
+

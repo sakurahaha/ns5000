@@ -1,0 +1,7 @@
+{
+    "name": "echo",
+    "tag": "atomic",
+    "memleakGuardCollectCore": false,
+    "memleakGuardTrigger": 100,
+    "description": "echo worker"
+}

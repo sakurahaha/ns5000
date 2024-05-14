@@ -1,0 +1,6 @@
+{
+    "name": "sysconfig",
+    "tag": "atomic",
+    "startupTimeout": 90000,
+    "description": "Kernel and OS parameters management"
+}

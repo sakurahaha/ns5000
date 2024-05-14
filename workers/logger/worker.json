@@ -1,0 +1,8 @@
+{
+    "name": "logger",
+    "tag": "core",
+    "description": "logger worker",
+    "before": ["tag:atomic", "tag:compound", "tag:interface"],
+    "args": ["--color"],
+    "_comment": "We have to enable colors on output because stdout of workers is a pipe and colors module refuses to print colors to pipe descriptors by default."
+}

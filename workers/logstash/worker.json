@@ -1,0 +1,6 @@
+{
+    "name": "logstash",
+    "tag": "atomic",
+    "description": "logstash shipper",
+    "after": ["sysconfig"]
+}

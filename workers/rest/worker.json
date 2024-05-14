@@ -1,0 +1,12 @@
+{
+    "name": "rest",
+    "tag": "interface",
+    "description": "REST server worker",
+    "startupTimeout": 90000,
+    "livenessCounter": 30,
+    "after": [
+        "tag:core",
+        "tag:atomic",
+        "tag:compound"
+    ]
+}

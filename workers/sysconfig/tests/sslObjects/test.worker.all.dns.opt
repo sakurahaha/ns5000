@@ -1,0 +1,1 @@
+{"certName":"test.worker","caName":"NefCA","subject":"/C=US/ST=CA/L=SC/O=Nexenta/OU=NEF/CN=test.worker","days":1825,"altName":"%ALL_DNS%"}

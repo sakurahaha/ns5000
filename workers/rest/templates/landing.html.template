@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NexentaStor</title>
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 100%;
+          font: inherit;
+          vertical-align: baseline;
+          line-height: 1.5em;
+        }
+
+        #header {
+          background-color: #e66b00;
+          padding: 14px;
+          font-family: "Open Sans", sans-serif !important;
+          font-size: 10pt;
+          color: white
+        }
+
+        .ui-wrap {
+          max-width: 960px;
+          margin-left: auto;
+          margin-right: auto;
+          padding: 0 20px;
+        }
+
+        #content {
+          line-height: 1.4em;
+          color: #333333;
+            font-family: "Open Sans", sans-serif !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"><div class="ui-wrap">
+        <h1>NexentaStor Node Name: <%= hostDomainName %></h1>
+    </div></div>
+
+    <div id="content"><div class="ui-wrap">
+        <!-- Fusion link -->
+        <% if (fedEnabled) { %>
+            <p>
+                To access the NexentaFusion Management Interface click the link below:
+                <br/>
+                <a href="https://<%= fedHost %>:8457/">
+                    https://<%= fedHost %>:8457/
+                </a>
+            </p>
+        <% } else { %>
+            <p>
+                Your appliance/node is not registered with a NexentaFusion instance. To manage the NexentaStor appliance via a web interface deploy NexentaFusion using the NexentaFusion Installation QuickStart found here:
+                <a href="https://nexenta.com/products/downloads/nexentastor5">https://nexenta.com/products/downloads/nexentastor5</a>
+            </p>
+        <% } %>
+
+        <hr/>
+
+        <!-- Swagger link -->
+        <% if (useSwagger) { %>
+            <p>
+                To access NexentaStor REST API Documentation click the link below:
+                <br/>
+                <a href="https://<%= host %>:8443/docs">
+                    https://<%= host %>:8443/docs
+                </a>
+            </p>
+        <% } else { %>
+            <p>
+                NexentaStor REST API Documentation is disabled by default.
+            </p>
+            <p>
+                The REST APIs provide programmatic access to managing a NexentaStor 5 appliance through HTTPS requests. It is a robust foundation for the new Nexenta Management Framework, a high-performance, multi-threaded, fault-tolerant management plane that provides a streamlined and simplified, storagecentric management experience.
+            </p>
+            <p>
+                Note: The API online documentation is a development tool and access is disabled by default. Enabling access in a production environment is not recommended.
+            </p>
+            <p>
+                If you must enable access to the detailed REST API documentation, follow these steps:
+                <ul>
+                    <li> Run this CLI command (case-sensitive parameter):
+                        <pre>CLI@nexenta> config set rest.useSwagger=true</pre>
+                    </li>
+                    <li> Point your browser to
+                        <a href="https://<%= host %>:8443/docs">
+                            https://<%= host %>:8443/docs
+                        </a>
+                        using the static IP address and password you set up during the NexentaStor installation.
+                    </li>
+                    <li> Login to try out the APIs.</li>
+                    <li> Explore specific APIs by selecting a method, entering part of the URL string, and clicking Try It Out </li>
+                </ul>
+            </p>
+        <% } %>
+    </div></div>
+</body>
+</html>
